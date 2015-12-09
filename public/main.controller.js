@@ -32,7 +32,7 @@ app.config(function($stateProvider) {
 	})
 })
 
-app.controller('MainController', function($scope, posts) {
+app.controller('MainController', function($scope, posts, $stateParams) {
 
  	/*
 		TODOS: 
@@ -42,6 +42,7 @@ app.controller('MainController', function($scope, posts) {
 
  	*/
  	$scope.allPosts = posts;
+ 	console.dir($stateParams);
     //console.log('posts: ', posts);
 })
 

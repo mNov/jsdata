@@ -15,7 +15,7 @@ app.config(function($stateProvider) {
 });
 
 // add necessary dependencies 
-app.controller('PostCtrl', function($scope, Post, $stateParams) {
+app.controller('PostCtrl', function($scope, Post, $stateParams, $state) {
 
 
 	/* 1. FIND POST
@@ -38,9 +38,12 @@ app.controller('PostCtrl', function($scope, Post, $stateParams) {
 		create a function that destroys the post, adds an alert that the post has been 
 		successfully deleted, and redirects to the main state. 
 	*/
-	// $scope.delete = function(id) {
-	// 	Post.destroy();
-	// }
+	$scope.delete = function() {
+		Post.destroy($stateParams.postId)
+		.then(function(res) {
+			$state.go('main', { response: res.data });
+		});
+	}
 
 	/*  IGNORE THIS!!!!
 		3. EDIT POST 
